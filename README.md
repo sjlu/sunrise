@@ -36,3 +36,17 @@ To start it up, all you need to do is run:
     grunt
     
 Note that it'll fork a process in. Anytime you change a file, it'll automatically compile your JS and LESS files and snapshot it into the `public/` directory. You do not need to touch this directory ever.
+
+## Notes
+
+### Issues
+
+If you need help using this, feel free to [submit an issue](https://github.com/sjlu/sunrise/issues/new). If you encounter something that's intuitive, please help revise this document.
+
+### Credit
+
+Much thanks to [@buzzedword](https://github.com/buzzedword) for inspiration on deployment and [Grunt](https://github.com/cowboy/grunt) and [@russfrank](https://github.com/russfrank) for the Javascript framework implementation.
+
+### License
+
+MIT.
