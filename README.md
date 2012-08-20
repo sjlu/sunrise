@@ -1,0 +1,3 @@
+# Sunrise
+
+Sunrise is a small bundle that allows to write a dedicated single page, frontend application. It was inspired by the short timings in hackathons and same-day release deadlines. It includes several libraries to help you move, like [Twitter Bootstrap](http://twitter.github.com/bootstrap/), [LESS CSS](http://lesscss.org/) and a simple JS framework. Sunrise's intention is to get you off the ground so there's little to learn.

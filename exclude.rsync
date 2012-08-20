@@ -1,0 +1,7 @@
+node_modules
+public
+.git*
+package.json
+grunt.js
+exclude.rsync
+README.md
