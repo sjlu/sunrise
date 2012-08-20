@@ -23,7 +23,7 @@ That's it, it's on to learn how to use Sunrise now.
 
 There are only a couple files and folders you'll need to recognize. It's not as bad as it looks.
 
-* `assets/less`: This folder contains your LESS CSS styles. When you add a new LESS file, you'll need to include it in `base.less`.
+* `assets/less`: This folder contains your LESS CSS styles. When you add a new LESS file, you'll need to include it in [base.less](https://github.com/sjlu/sunrise/blob/master/assets/less/base.less).
 * `assets/js`: This folder will contain your Javascript files. Your [base.js](https://github.com/sjlu/sunrise/blob/master/assets/js/base.js) will contain your `$(document).ready()` function. You'll need to declare your models in here, such as the [frontpage.js](https://github.com/sjlu/sunrise/blob/master/assets/js/frontpage.js) file.
 * `index.html`: Anything requiring your HTML document goes here. You can create new HTML files in this root directory, but it is not recommended since the purpose is a "single-page" application. You'll also notice two commented lines here, these are the minified files. It is recommended that you comment/uncomment the appropriate lines when you're developing and running in a live environment.
 
