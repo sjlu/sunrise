@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 		},
 		shell: {
 			rsync: {
-				command: 'rsync -r --exclude-from="exclude.rsync" --delete . public/',
+				command: 'rsync -r --exclude-from="exclude.rsync" --delete . public/; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/',
 				stdout: true
 			},
          deploy: {
