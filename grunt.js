@@ -28,30 +28,34 @@ module.exports = function(grunt) {
 			port: 8000,
 			base: 'public/'
 		},
+		files: {
+			js: [
+				'assets/raw/twitter-bootstrap/js/bootstrap-affix.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-alert.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-button.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-carousel.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-collapse.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-dropdown.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-modal.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-tooltip.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-popover.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-scrollspy.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-tab.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-transition.js',
+				'assets/raw/twitter-bootstrap/js/bootstrap-typeahead.js',
+				'assets/js/*.js',
+			]
+		},
 		concat: {
 			js: {
-				src: ['assets/js/*.js', 'assets/raw/twitter-bootstrap/js/*.js'],
+				src: '<config:files.js>',
 				dest: 'public/assets/js/app.js'
-			}
+			},
 		},
 		min: {
 			js: {
-				src: ['assets/js/*.js'],
+				src: '<config:files.js>',
 				dest: 'public/assets/js/app.min.js'
-			}
-		},
-		shell: {
-			// rsync: {
-			// 	command: 'rsync -r --exclude-from="exclude.rsync" --delete . public/; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/',
-			// 	stdout: true
-			// },
-			sync: {
-	            command: 'rm -rf public/; mkdir -p public/assets/font; mkdir -p public/assets/img; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/; cp index.html public/',
-	            stdout: true
-			},
-			deploy: {
-	            command: 'git stash; git push origin :gh-pages; git branch -D gh-pages; git symbolic-ref HEAD refs/heads/gh-pages; rm -rf .git/index /tmp/public /tmp/node_modules /tmp/raw; mv public /tmp; mv node_modules /tmp; cp -R assets/raw /tmp; git clean -fdx; mv /tmp/public/* .; git add .; git commit -m "auto-generated deployment to gh-pages"; git push origin gh-pages; git checkout master; mv /tmp/node_modules .; cp -R /tmp/raw assets/; git stash apply',
-	            stdout: true
 			}
 		},
 		recess: {
@@ -64,6 +68,16 @@ module.exports = function(grunt) {
 				src: ['assets/less/base.less'],
 				dest: 'public/assets/css/style.min.css',
 				options: recessOptions(true)
+			}
+		},
+		shell: {
+			sync: {
+	            command: 'rm -rf public/; mkdir -p public/assets/font; mkdir -p public/assets/img; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/; cp index.html public/',
+	            stdout: true
+			},
+			deploy: {
+	            command: 'git stash; git push origin :gh-pages; git branch -D gh-pages; git symbolic-ref HEAD refs/heads/gh-pages; rm -rf .git/index /tmp/public /tmp/node_modules /tmp/raw; mv public /tmp; mv node_modules /tmp; cp -R assets/raw /tmp; git clean -fdx; mv /tmp/public/* .; git add .; git commit -m "auto-generated deployment to gh-pages"; git push origin gh-pages; git checkout master; mv /tmp/node_modules .; cp -R /tmp/raw assets/; git stash apply',
+	            stdout: true
 			}
 		},
 		watch: {
