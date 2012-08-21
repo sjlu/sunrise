@@ -1,5 +1,6 @@
-var express = require('express');
+require('child_process').exec('grunt');
 
+var express = require('express');
 var app = express();
 
 app.configure(function(){

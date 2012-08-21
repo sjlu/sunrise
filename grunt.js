@@ -87,5 +87,6 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'shell:rsync recess concat min server watch');
+	grunt.registerTask('default', 'shell:rsync recess concat min');
+   grunt.registerTask('server', 'shell:rsync recess concat min server watch');
 };
