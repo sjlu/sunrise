@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 		},
 		concat: {
 			js: {
-				src: ['public/assets/js/*.js'],
+				src: ['public/assets/js/*.js', 'public/assets/raw/twitter-bootstrap/js/*.js'],
 				dest: 'public/assets/js/app.js'
 			}
 		},

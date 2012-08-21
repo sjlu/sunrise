@@ -59,4 +59,4 @@ var Frontpage = function()
       * the exports object.
       */
      return exports;
-}
+};
