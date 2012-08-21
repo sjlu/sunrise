@@ -1,6 +1,6 @@
 {
   "name": "sunrise",
-  "version": "0.1.0-4",
+  "version": "0.1.0",
   "main": "app.js",
   "repository": {
     "type": "git",
