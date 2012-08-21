@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 	            stdout: true
 			},
 			deploy: {
-	            command: 'git symbolic-ref HEAD refs/heads/gh-pages; rm -rf .git/index; mv public /tmp; mv node_modules /tmp git clean -fdx; mv /tmp/public/* .; git add .; git commit -m "first publish, automatically created orphan branch"; git push origin gh-pages; git checkout master; mv /tmp/node_modules .',
+	            command: 'git push origin :gh-pages; git branch -D gh-pages; git symbolic-ref HEAD refs/heads/gh-pages; rm -rf .git/index; mv public /tmp; mv node_modules /tmp git clean -fdx; mv /tmp/public/* .; git add .; git commit -m "first publish, automatically created orphan branch"; git push origin gh-pages; git checkout master; mv /tmp/node_modules .',
 	            stdout: true
 			}
 		},
