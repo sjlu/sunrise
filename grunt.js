@@ -44,7 +44,11 @@ module.exports = function(grunt) {
 			rsync: {
 				command: 'rsync -r --exclude-from="exclude.rsync" --delete . public/',
 				stdout: true
-			}
+			},
+         deploy: {
+            command: 'git checkout -b gh-pages; ',
+            stdout: true
+         }
 		},
 		recess: {
 			max: {

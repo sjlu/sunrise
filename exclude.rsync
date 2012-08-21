@@ -1,6 +1,7 @@
 node_modules
 public
-.git*
+.git
+.gitmodules
 package.json
 grunt.js
 exclude.rsync
