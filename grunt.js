@@ -44,7 +44,11 @@ module.exports = function(grunt) {
 			rsync: {
 				command: 'rsync -r --exclude-from="exclude.rsync" --delete . public/',
 				stdout: true
-			}
+			},
+         deploy: {
+            command: 'git symbolic-ref HEAD refs/heads/gh-pages; rm .git/index; mv public ..; git clean -fdx; mv ../public/* .; git add .; git commit -m "Deployed by Grunt"; git push origin gh-pages',
+            stdout: true
+         }
 		},
 		recess: {
 			max: {
@@ -89,4 +93,5 @@ module.exports = function(grunt) {
 	// Default task.
 	grunt.registerTask('default', 'shell:rsync recess concat min');
    grunt.registerTask('server', 'shell:rsync recess concat min server watch');
+   grunt.registerTask('deploy', 'shell:rsync recess concat min shell:deploy');
 };
