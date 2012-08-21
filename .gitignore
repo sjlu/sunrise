@@ -1,6 +1,8 @@
 node_modules/
 public/
 
+*.log
+
 # OS Generated Files
 .DS_Store
 .DS_Store?
