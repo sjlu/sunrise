@@ -30,34 +30,38 @@ module.exports = function(grunt) {
 		},
 		concat: {
 			js: {
-				src: ['public/assets/js/*.js', 'public/assets/raw/twitter-bootstrap/js/*.js'],
+				src: ['assets/js/*.js', 'assets/raw/twitter-bootstrap/js/*.js'],
 				dest: 'public/assets/js/app.js'
 			}
 		},
 		min: {
 			js: {
-				src: ['public/assets/js/*.js'],
+				src: ['assets/js/*.js'],
 				dest: 'public/assets/js/app.min.js'
 			}
 		},
 		shell: {
-			rsync: {
-				command: 'rsync -r --exclude-from="exclude.rsync" --delete . public/; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/',
-				stdout: true
+			// rsync: {
+			// 	command: 'rsync -r --exclude-from="exclude.rsync" --delete . public/; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/',
+			// 	stdout: true
+			// },
+			sync: {
+	            command: 'rm -rf public/; mkdir -p public/assets/font; mkdir -p public/assets/img; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/; cp index.html public/',
+	            stdout: true
 			},
-         deploy: {
-            command: 'git checkout --orphan gh-pages; git checkout gh-pages; find . | grep -v "node_modules" | grep -v "public" | grep -v ".git" | xargs rm -rf; git add .;',
-            stdout: true
-         }
+			deploy: {
+	            command: 'git symbolic-ref HEAD refs/head/gh-pages; rm -rf .git/index; mv public /tmp; git clean -fdx; mv /tmp/public/* .; git add .; git commit -m "first publish, automatically created orphan branch"; git push origin gh-pages;',
+	            stdout: true
+			}
 		},
 		recess: {
 			max: {
-				src: ['public/assets/less/base.less'],
+				src: ['assets/less/base.less'],
 				dest: 'public/assets/css/style.css',
 				options: recessOptions(false)
 			},
 			min: {
-				src: ['public/assets/less/base.less'],
+				src: ['assets/less/base.less'],
 				dest: 'public/assets/css/style.min.css',
 				options: recessOptions(true)
 			}
@@ -65,11 +69,11 @@ module.exports = function(grunt) {
 		watch: {
 			less: {
 				files: ['assets/less/*.less', 'assets/less/**/*.less'],
-				tasks: 'shell:rsync concat min recess'
+				tasks: 'shell:sync concat min recess'
 			},
 			js: {
 				files: 'assets/js/*.js',
-				tasks: 'shell:rsync concat min recess'
+				tasks: 'shell:sync concat min recess'
 			}
 		},
 		jshint: {
@@ -91,6 +95,6 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'shell:rsync recess concat min server watch');
-   grunt.registerTask('deploy', 'shell:rsync recess concat min shell:deploy');
+	grunt.registerTask('default', 'shell:sync recess concat min server watch');
+  	grunt.registerTask('deploy', 'shell:sync recess concat min shell:deploy');
 };
