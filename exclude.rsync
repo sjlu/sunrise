@@ -6,3 +6,4 @@ grunt.js
 exclude.rsync
 README.md
 app.js
+Procfile
