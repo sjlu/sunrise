@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			less: {
-				files: ['assets/less/*.less', '/less/**/*.less'],
+				files: ['assets/less/*.less', 'assets/less/**/*.less'],
 				tasks: 'shell:rsync concat min recess'
 			},
 			js: {
@@ -87,7 +87,6 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'shell:rsync recess concat min');
-   grunt.registerTask('server', 'shell:rsync recess concat min server watch');
+	grunt.registerTask('default', 'shell:rsync recess concat min server watch');
    grunt.registerTask('deploy', 'shell:rsync recess concat min shell:deploy');
 };
