@@ -1,6 +1,6 @@
 {
-   "name": "Sunrise",
-   "version": "1.0.0",
+   "name": "sunrise",
+   "version": "0.1.0",
    "main": "grunt.js",
    "repository": {
       "type": "git",

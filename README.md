@@ -8,10 +8,7 @@ Sunrise is a small bundle that allows to write a dedicated single page, frontend
 
 You can do two things, you can either clone the repository. Or you can you can [download](https://github.com/sjlu/sunrise/zipball/master) a copy.
 
-    git clone git@github.com:sjlu/sunrise.git
-    cd sunrise
-    git submodule init
-    git submodule update
+    git clone --recursive git@github.com:sjlu/sunrise.git
 
 When you're finished with that, you'll need to have [node.js](http://nodejs.org/) installed. Run the following command to install the dependencies.
 
