@@ -9,4 +9,4 @@ app.configure(function(){
    app.use(app.router);
 });
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
