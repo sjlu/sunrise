@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 				stdout: true
 			},
          deploy: {
-            command: 'git checkout -b gh-pages; ',
+            command: 'git checkout --orphan gh-pages; git checkout gh-pages; find . | grep -v "node_modules" | grep -v "public" | grep -v ".git" | xargs rm -rf; git add .;',
             stdout: true
          }
 		},
