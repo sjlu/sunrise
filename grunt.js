@@ -44,6 +44,9 @@ module.exports = function(grunt) {
 				'assets/raw/twitter-bootstrap/js/bootstrap-transition.js',
 				'assets/raw/twitter-bootstrap/js/bootstrap-typeahead.js',
 				'assets/js/*.js',
+			],
+			less: [
+				'assets/less/base.less'
 			]
 		},
 		concat: {
@@ -51,22 +54,20 @@ module.exports = function(grunt) {
 				src: '<config:files.js>',
 				dest: 'public/assets/js/app.js'
 			},
+			less: {
+				src: '<config:files.less>',
+				dest: 'public/assets/css/style.css',
+				options: recessOptions(false)
+			}
 		},
 		min: {
 			js: {
 				src: '<config:files.js>',
-				dest: 'public/assets/js/app.min.js'
-			}
-		},
-		recess: {
-			max: {
-				src: ['assets/less/base.less'],
-				dest: 'public/assets/css/style.css',
-				options: recessOptions(false)
+				dest: 'public/assets/js/app.js'
 			},
-			min: {
-				src: ['assets/less/base.less'],
-				dest: 'public/assets/css/style.min.css',
+			less: {
+				src: '<config:files.less>',
+				dest: 'public/assets/css/style.css',
 				options: recessOptions(true)
 			}
 		},
@@ -83,11 +84,11 @@ module.exports = function(grunt) {
 		watch: {
 			less: {
 				files: ['assets/less/*.less', 'assets/less/**/*.less'],
-				tasks: 'shell:sync concat min recess'
+				tasks: 'shell:sync concat'
 			},
 			js: {
-				files: 'assets/js/*.js',
-				tasks: 'shell:sync concat min recess'
+				files: '<config:files.js>',
+				tasks: 'shell:sync concat'
 			}
 		},
 		jshint: {
@@ -109,6 +110,6 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'shell:sync recess concat min server watch');
-  	grunt.registerTask('deploy', 'shell:sync recess concat min shell:deploy');
+	grunt.registerTask('default', 'shell:sync concat server watch');
+  	grunt.registerTask('deploy', 'shell:sync min shell:deploy');
 };
