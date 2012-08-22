@@ -53,24 +53,26 @@ module.exports = function(grunt) {
 			js: {
 				src: '<config:files.js>',
 				dest: 'public/assets/js/app.js'
-			},
-			less: {
-				src: '<config:files.less>',
-				dest: 'public/assets/css/style.css',
-				options: recessOptions(false)
 			}
 		},
 		min: {
 			js: {
 				src: '<config:files.js>',
 				dest: 'public/assets/js/app.js'
-			},
-			less: {
+			}
+		},
+		recess: {
+			min: {
 				src: '<config:files.less>',
 				dest: 'public/assets/css/style.css',
 				options: recessOptions(true)
+			},
+			max: {
+				src: '<config:files.less>',
+				dest: 'public/assets/css/style.css',
+				options: recessOptions(false)
 			}
-		},
+		}
 		shell: {
 			sync: {
 	            command: 'rm -rf public/; mkdir -p public/assets/font; mkdir -p public/assets/img; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/; cp index.html public/',
@@ -84,11 +86,11 @@ module.exports = function(grunt) {
 		watch: {
 			less: {
 				files: ['assets/less/*.less', 'assets/less/**/*.less'],
-				tasks: 'shell:sync concat'
+				tasks: 'shell:sync concat recess:max'
 			},
 			js: {
 				files: '<config:files.js>',
-				tasks: 'shell:sync concat'
+				tasks: 'shell:sync concat recess:max'
 			}
 		},
 		jshint: {
@@ -110,6 +112,6 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'shell:sync concat server watch');
-  	grunt.registerTask('deploy', 'shell:sync min shell:deploy');
+	grunt.registerTask('default', 'shell:sync concat recess:max server watch');
+  	grunt.registerTask('deploy', 'shell:sync min recess:min shell:deploy');
 };
