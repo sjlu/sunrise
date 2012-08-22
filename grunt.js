@@ -47,6 +47,9 @@ module.exports = function(grunt) {
 			],
 			less: [
 				'assets/less/base.less'
+			],
+			html: [
+				'*.html'
 			]
 		},
 		concat: {
@@ -90,6 +93,10 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: '<config:files.js>',
+				tasks: 'shell:sync concat recess:max'
+			},
+			html: {
+				files: '<config:files.html>',
 				tasks: 'shell:sync concat recess:max'
 			}
 		},
