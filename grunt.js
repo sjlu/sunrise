@@ -86,7 +86,8 @@ module.exports = function(grunt) {
 	            	git branch -D gh-pages; 
 	            	git symbolic-ref HEAD refs/heads/gh-pages; 
 	            	rm -rf .git/index /tmp/public /tmp/node_modules /tmp/raw; 
-	            	mv public /tmp; mv node_modules /tmp; 
+	            	mv public /tmp; 
+	            	mv node_modules /tmp; 
 	            	cp -R assets/raw /tmp; 
 	            	git clean -fdx; 
 	            	mv /tmp/public/* .; 
