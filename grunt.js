@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 				dest: 'public/assets/css/style.css',
 				options: recessOptions(false)
 			}
-		}
+		},
 		shell: {
 			sync: {
 	            command: 'rm -rf public/; mkdir -p public/assets/font; mkdir -p public/assets/img; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/; cp index.html public/',
