@@ -82,7 +82,7 @@ module.exports = function(grunt) {
 	            stdout: true
 			},
 			deploy: {
-	            command: 'git stash; git push origin :gh-pages; git branch -D gh-pages; git symbolic-ref HEAD refs/heads/gh-pages; rm -rf .git/index /tmp/public /tmp/node_modules /tmp/raw; mv public /tmp; mv node_modules /tmp; cp -R assets/raw /tmp; git clean -fdx; mv /tmp/public/* .; git add .; git commit -m "auto-generated deployment to gh-pages"; git push origin gh-pages; git checkout master; mv /tmp/node_modules .; cp -R /tmp/raw assets/; git stash apply',
+	            command: 'git stash; git push origin :gh-pages; git branch -D gh-pages; git symbolic-ref HEAD refs/heads/gh-pages; rm -rf .git/index /tmp/public /tmp/node_modules /tmp/raw; mv public /tmp; mv node_modules /tmp; cp -R assets/raw /tmp; git clean -fdx; mv /tmp/public/* .; git add .; git commit -m "auto-generated deployment to gh-pages"; git checkout master; mv /tmp/node_modules .; cp -R /tmp/raw assets/; git stash apply',
 	            stdout: true
 			}
 		},

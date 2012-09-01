@@ -42,7 +42,22 @@ You can deploy to [Github Pages](http://pages.github.com/) really easy by runnin
 
     grunt deploy
 
-This will create a new branch, `gh-pages` which will have a clean release. You'll be able to view it at `http://<username>.github.com/<project>`.
+This will create a new branch, `gh-pages` which will have a clean root structure of your `/public` directory with minified files. 
+
+#### Github Pages
+
+Run the following command in order to view it at `http://[username].github.com/[project]`.
+
+    git push origin gh-pages
+
+#### Heroku
+
+You can easily deploy to Heroku also, you'll need to use a custom buildpack in order to do so.
+
+    heroku create --stack cedar --buildpack https://github.com/sjlu/heroku-buildpack-static.git
+    git push heroku gh-pages:master
+
+Note that the push will take the `gh-pages` and make it the master branch on the remote since Heroku will ignore all branches other than `master`.
 
 ## Notes
 
