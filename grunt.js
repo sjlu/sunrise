@@ -3,6 +3,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-contrib');
 
+/**
+ * Provides a helper function to define less minify/max
+ * @param  {[type]} bool If true, produce minified output
+ * @return {[type]} Object Configuration object for recess task
+ */
 	var recessOptions = function(bool) {
 		bool = ((typeof bool === 'undefined')? false : bool);
 		var config = {
@@ -61,26 +66,37 @@ module.exports = function(grunt) {
 		min: {
 			js: {
 				src: '<config:files.js>',
-				dest: 'public/assets/js/app.js'
+				dest: 'public/assets/js/app.min.js'
 			}
 		},
 		recess: {
 			min: {
 				src: '<config:files.less>',
-				dest: 'public/assets/css/style.css',
+				dest: 'public/assets/css/style.min.css',
+				/** @type {parameter} Minify enabled */
 				options: recessOptions(true)
 			},
 			max: {
 				src: '<config:files.less>',
 				dest: 'public/assets/css/style.css',
+				/** @type {parameter} Minify disabled */
 				options: recessOptions(false)
 			}
 		},
 		shell: {
+			/**
+			 * Task clears public directory, creates font assets, copies assets, and syncronizes templated HTML
+			 * @type {Object} Shell subtask
+			 */
 			sync: {
 	            command: 'rm -rf public/; mkdir -p public/assets/font; mkdir -p public/assets/img; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/; cp *.html public/; cp assets/img/* public/assets/img/',
 	            stdout: true
 			},
+			/**
+			 * Task saves local changes, clears gh-pages, and pushes a new copy of your public folder stacked
+			 * on top of the old gh-pages. Followed by applying changes after push back to local copy.
+			 * @type {Object} Shell subtask
+			 */
 			deploy: {
 	            command: 'git stash; git push origin :gh-pages; git branch -D gh-pages; git symbolic-ref HEAD refs/heads/gh-pages; rm -rf .git/index /tmp/public /tmp/node_modules /tmp/raw; mv public /tmp; mv node_modules /tmp; cp -R assets/raw /tmp; git clean -fdx; mv /tmp/public/* .; git add .; git commit -m "auto-generated deployment to gh-pages"; git checkout master; mv /tmp/node_modules .; cp -R /tmp/raw assets/; git stash apply',
 	            stdout: true
