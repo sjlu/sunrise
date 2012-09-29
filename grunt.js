@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 		},
 		shell: {
 			sync: {
-	            command: 'rm -rf public/; mkdir -p public/assets/font; mkdir -p public/assets/img; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/; cp *.html public/; cp assets/img/* public/assets/img/',
+	            command: 'rm -rf public/; mkdir -p public/assets/font; mkdir -p public/assets/img; cp assets/raw/font-awesome/font/* public/assets/font/; cp assets/raw/twitter-bootstrap/img/* public/assets/img/; cp *.html public/; cp assets/img/* public/assets/img/; cp CNAME public/',
 	            stdout: true
 			},
 			deploy: {
