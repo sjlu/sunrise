@@ -1,7 +1,7 @@
 {
   "name": "sunrise",
   "version": "0.1.0",
-  "main": "app.js",
+  "main": "grunt.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/sjlu/sunrise.git"
@@ -17,11 +17,4 @@
     "grunt-contrib": "~0.1.1",
     "express": "3.x"
   },
-  "scripts": {
-    "start": "app.js"
-  },
-  "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
-  }
 }
