@@ -9,7 +9,7 @@
     "license": "MIT",
     "description": "A small bootstrapped, single-page, Javascript framework to start you up!",
     "dependencies": {
-        "grunt-less": "~0.1.5",
+        "grunt-contrib-less": ">0.0.0",
         "grunt-recess": "~0.1.0",
         "grunt-requirejs": "~0.2.9",
         "grunt-shell": "~0.1.2",
