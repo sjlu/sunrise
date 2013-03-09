@@ -55,24 +55,24 @@ module.exports = function(grunt) {
 		concat: {
 			js: {
 				src: '<config:files.js>',
-				dest: 'public/assets/js/app.js'
+				dest: 'public/assets/app.js'
 			}
 		},
 		min: {
 			js: {
 				src: '<config:files.js>',
-				dest: 'public/assets/js/app.js'
+				dest: 'public/assets/app.js'
 			}
 		},
 		recess: {
 			min: {
 				src: '<config:files.less>',
-				dest: 'public/assets/css/style.css',
+				dest: 'public/assets/style.css',
 				options: recessOptions(true)
 			},
 			max: {
 				src: '<config:files.less>',
-				dest: 'public/assets/css/style.css',
+				dest: 'public/assets/style.css',
 				options: recessOptions(false)
 			}
 		},
