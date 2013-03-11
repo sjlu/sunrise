@@ -12,6 +12,7 @@ You can do two things, you can either clone the repository. Or you can you can [
 
 When you're finished with that, you'll need to have [node.js](http://nodejs.org/) installed. Run the following command to install the dependencies.
 
+    npm install -g grunt-cli
     npm install
     
 That's it, it's on to learn how to use Sunrise now.
